@@ -91,8 +91,11 @@
 * `unmapAll`: 取消所有命令绑定，当你尝试删除vimium的所有命令并且开始自己的设定
 
 **eg.**
+    
     `<map <c-d> scrollPageDown>` 设置`<c-d>`为 ctrl+d 的按键，并且覆盖chrome设定
+    
     `map r reload` 设置 `r` 为reload 的快捷键
+    
     `unmap <c-d>` 取消 c-d 的设置
 
 
