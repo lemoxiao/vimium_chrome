@@ -1,4 +1,4 @@
-# Vim 中文指南
+# Vimium 中文指南
 
 ## Github 地址
     https://github.com/mutoo/vimium
@@ -97,16 +97,23 @@
 
 
 ## Vimium快速使用搜索引擎
-命令：
+**命令：**
+    
     按 `o` 进入搜索模式，然后输入`缩写+搜索内容`.
-eg:
+
+**eg:**
+
     `o`+`g vimium github readme`  //即用google搜索关键词：vimium github readme
     `o`+ `y edsheeran perfect`    //即在youtube中搜索：edsheeran perfect
-提示:
+
+**提示:**
+    
     当你输入上述语句时，搜索模式会给出对应的补全提示
     
 ### 具体设置：   
-打开Vimium的设置选项中，在自定义搜索引擎的搜索格式，具体格式可以自行搜索，以下给出常见的搜索引擎格式：
+打开Vimium的设置选项中，在自定义搜索引擎的搜索格式，具体格式可以自行搜索，以下给出常见的搜索
+引擎格式：
+
     //谷歌
     # g: http://www.google.com.hk/search?q=%us 
     //油管视频
