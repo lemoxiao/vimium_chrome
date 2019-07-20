@@ -1,506 +1,593 @@
-# Awesome - APP
+Vimium - The Hacker's Browser
+=============================
+
+[![Build Status](https://travis-ci.org/philc/vimium.svg?branch=master)](https://travis-ci.org/philc/vimium)
+
+Vimium is a Chrome extension that provides keyboard-based navigation and control of the web in the spirit of
+the Vim editor.
+
+__Installation instructions:__
+
+You can install the stable version of Vimium from the
+[Chrome Extensions Gallery](https://chrome.google.com/extensions/detail/dbepggeogbaibhgnhhndojpepiihcmeb).
+
+Please see
+[CONTRIBUTING.md](CONTRIBUTING.md#installing-from-source)
+for instructions on how you can install Vimium from source.
+
+The Options page can be reached via a link on the help dialog (type `?`) or via the button next to Vimium on
+the Chrome Extensions page (`chrome://extensions`).
+
+Keyboard Bindings
+-----------------
+
+Modifier keys are specified as `<c-x>`, `<m-x>`, and `<a-x>` for ctrl+x, meta+x, and alt+x
+respectively. For shift+x and ctrl-shift-x, just type `X` and `<c-X>`. See the next section for how to customize these bindings.
+
+Once you have Vimium installed, you can see this list of key bindings at any time by typing `?`.
 
-**更新日期 2019.7.20**
+Navigating the current page:
+
+    ?       show the help dialog for a list of all available keys
+    h       scroll left
+    j       scroll down
+    k       scroll up
+    l       scroll right
+    gg      scroll to top of the page
+    G       scroll to bottom of the page
+    d       scroll down half a page
+    u       scroll up half a page
+    f       open a link in the current tab
+    F       open a link in a new tab
+    r       reload
+    gs      view source
+    i       enter insert mode -- all commands will be ignored until you hit Esc to exit
+    yy      copy the current url to the clipboard
+    yf      copy a link url to the clipboard
+    gf      cycle forward to the next frame
+    gF      focus the main/top frame
 
-​    这是一本我自己的应用手册，主要涉及Windows、MacOS、Ipad上的主力应用，从生产力工具到系统小工具，都是我这两年内自己亲身体验过的非常好用的App，还有附带这些平台上软件的下载方法，算是给自己这两年的软件使用一个总结。后期更新应该跨度会比较久了。
+Navigating to new pages:
 
-​    这些应用主要更加偏向于科研学术和计算机两个方面，大部分都是我自己长期使用的软件，少部分只是评价还不错，暂时还没来得及消化使用。
+    o       Open URL, bookmark, or history entry
+    O       Open URL, bookmark, history entry in a new tab
+    b       Open bookmark
+    B       Open bookmark in a new tab
+
+Using find:
+
+    /       enter find mode
+              -- type your search query and hit enter to search, or Esc to cancel
+    n       cycle forward to the next find match
+    N       cycle backward to the previous find match
+
+For advanced usage, see [regular expressions](https://github.com/philc/vimium/wiki/Find-Mode) on the wiki.
 
-​    如果有什么建议和反馈可以及时给我发邮件：lemoxiao@gmail.com
+Navigating your history:
 
-   * [Awesome - APP](#awesome---app)
-      * [MacOS](#macos)
-         * [办公软件](#办公软件)
-         * [阅读工具](#阅读工具)
-         * [写作工具](#写作工具)
-         * [学术工具](#学术工具)
-         * [效率工具](#效率工具)
-         * [桌面、顶部工具栏](#桌面顶部工具栏)
-         * [系统工具](#系统工具)
-         * [编程工具](#编程工具)
-      * [Mac应用市场](#mac应用市场)
-         * [正版/介绍](#正版介绍)
-         * [盗版软件下载网站](#盗版软件下载网站)
-      * [IPad](#ipad)
-         * [笔记工具(Apple Pencil 必备系列)](#笔记工具apple-pencil-必备系列)
-         * [生产力工具](#生产力工具)
-         * [强大的小工具](#强大的小工具)
-         * [参考\计算工具](#参考计算工具)
-         * [学术工具](#学术工具-1)
-         * [视频学习](#视频学习)
-         * [常用软件](#常用软件)
-      * [Ipad 应用商店](#ipad-应用商店)
-      * [Windows](#windows)
-         * [神器](#神器)
-         * [小工具](#小工具)
-         * [常用软件](#常用软件-1)
+    H       go back in history
+    L       go forward in history
 
-## MacOS
+Manipulating tabs:
 
-### 办公软件
+    J, gT   go one tab left
+    K, gt   go one tab right
+    g0      go to the first tab
+    g$      go to the last tab
+    ^       visit the previously-visited tab
+    t       create tab
+    yt      duplicate current tab
+    x       close current tab
+    X       restore closed tab (i.e. unwind the 'x' command)
+    T       search through your open tabs
+    W       move current tab to new window
+    <a-p>   pin/unpin current tab
 
-* **WPS Office**
+Using marks:
 
-* **Word**
+    ma, mA  set local mark "a" (global mark "A")
+    `a, `A  jump to local mark "a" (global mark "A")
+    ``      jump back to the position before the previous jump
+              -- that is, before the previous gg, G, n, N, / or `a
 
-* **PDF Expert**
+Additional advanced browsing commands:
 
-* **OneNote**
+    ]], [[  Follow the link labeled 'next' or '>' ('previous' or '<')
+              - helpful for browsing paginated sites
+    <a-f>   open multiple links in a new tab
+    gi      focus the first (or n-th) text input box on the page
+    gu      go up one level in the URL hierarchy
+    gU      go up to root of the URL hierarchy
+    ge      edit the current URL
+    gE      edit the current URL and open in a new tab
+    zH      scroll all the way left
+    zL      scroll all the way right
+    v       enter visual mode; use p/P to paste-and-go, use y to yank
+    V       enter visual line mode
+
+Vimium supports command repetition so, for example, hitting `5t` will open 5 tabs in rapid succession. `<Esc>` (or
+`<c-[>`) will clear any partial commands in the queue and will also exit insert and find modes.
+
+There are some advanced commands which aren't documented here; refer to the help dialog (type `?`) for a full
+list.
+
+Custom Key Mappings
+-------------------
+
+You may remap or unmap any of the default key bindings in the "Custom key mappings" on the options page.
+
+Enter one of the following key mapping commands per line:
+
+- `map key command`: Maps a key to a Vimium command. Overrides Chrome's default behavior (if any).
+- `unmap key`: Unmaps a key and restores Chrome's default behavior (if any).
+- `unmapAll`: Unmaps all bindings. This is useful if you want to completely wipe Vimium's defaults and start
+  from scratch with your own setup.
+
+Examples:
+
+- `map <c-d> scrollPageDown` maps ctrl+d to scrolling the page down. Chrome's default behavior of bringing up
+  a bookmark dialog is suppressed.
+- `map r reload` maps the r key to reloading the page.
+- `unmap <c-d>` removes any mapping for ctrl+d and restores Chrome's default behavior.
+- `unmap r` removes any mapping for the r key.
+
+Available Vimium commands can be found via the "Show available commands" link
+near the key mapping box on the options page. The command name appears to the
+right of the description in parenthesis.
+
+You can add comments to key mappings by starting a line with `"` or `#`.
+
+The following special keys are available for mapping:
+
+- `<c-*>`, `<a-*>`, `<m-*>` for ctrl, alt, and meta (command on Mac) respectively with any key. Replace `*`
+  with the key of choice.
+- `<left>`, `<right>`, `<up>`, `<down>` for the arrow keys.
+- `<f1>` through `<f12>` for the function keys.
+- `<space>` for the space key.
+- `<tab>`, `<enter>`, `<delete>`, `<backspace>`, `<insert>`, `<home>` and `<end>` for the corresponding non-printable keys (version 1.62 onwards).
+
+Shifts are automatically detected so, for example, `<c-&>` corresponds to ctrl+shift+7 on an English keyboard.
+
+More documentation
+------------------
+Many of the more advanced or involved features are documented on
+[Vimium's GitHub wiki](https://github.com/philc/vimium/wiki). Also
+see the [FAQ](https://github.com/philc/vimium/wiki/FAQ).
+
+Contributing
+------------
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+Firefox Support
+---------------
+
+There is an *experimental* port of Vimium on Firefox [here](https://addons.mozilla.org/en-GB/firefox/addon/vimium-ff/).
+This is very much experimental: most features work, although some bugs and issues remain.
+
+PRs are welcome.
+
+Release Notes
+-------------
+
+In `master` (not yet released)
+
+- Custom search engines can now be `javascript:` URLs (eg., search the current [site](https://github.com/philc/vimium/issues/2956#issuecomment-366509915)).
+- You can now using local marks to mark a hash/anchor.
+
+1.63 (2018-02-16)
+
+- The `reload` command now accepts a count prefix; so `999r` reloads all tabs (in the current window).
+- Better detection of click listeners for link hints.
+- Display version number in page popup.
+- The Vomnibar is now loaded on demand (not preloaded).  This should fix some issues with the dev console.
+- The `\I` control (case sensitivity) for find mode has been removed.  Find mode uses smartcase.
+- Various bug fixes.
+- 1.63.1 (Firefox only):
+    - Fix [#2958](https://github.com/philc/vimium/issues/2958#issuecomment-366488659), link hints broken for `target="_blank"` links.
+- 1.63.2 (Firefox only):
+    - Fix [#2962](https://github.com/philc/vimium/issues/2962), find mode broken on Firefox Quantum.
+- 1.63.3:
+    - Fix [#2997](https://github.com/philc/vimium/issues/2997), Vimium's DOM injection breaks Google Pay site.
+
+1.62 (2017-12-09)
+
+- Backup and restore Vimium options (see the very bottom of the options page, below *Advanced Options*).
+- It is now possible to map `<tab>`, `<enter>`, `<delete>`, `<insert>`, `<home>` and `<end>`.
+- New command options for `createTab` to create new normal and incognito windows
+  ([examples](https://github.com/philc/vimium/wiki/Tips-and-Tricks#creating-tabs-with-urls-and-windows)).
+- Firefox only:
+    - Fix copy and paste commands.
+    - When upgrading, you will be asked to re-validate permissions.  The only
+      new permission is "copy and paste to/from clipboard" (the
+      `clipboardWrite` permission).  This is necessary to support copy/paste on
+      Firefox.
+- Various bug fixes.
+- 1.62.1: Swap global and local marks (1.62.1).
+  In a browser, some people find global marks more useful than local marks.
+  Example:
+
+```
+map X Marks.activateCreateMode swap
+map Y Marks.activateGotoMode swap
+```
+
+- Other minor versions:
+    - 1.62.2: Fixes [#2868](https://github.com/philc/vimium/issues/2868) (`createTab` with multiple URLs).
+    - 1.62.4: Fixes bug affecting the enabled state, and really fix `createTab`.
+
+1.61 (2017-10-27)
+
+- For *filtered hints*, you can now use alphabetical hint characters
+  instead of digits; use `<Shift>` for hint characters.
+- With `map R reload hard`, the reload command now asks Chrome to bypass its cache.
+- You can now map `<c-[>` to a command (in which case it will not be treated as `Escape`).
+- Various bug fixes, particularly for Firefox.
+- Minor versions:
+    - 1.61.1: Fix `map R reload hard`.
+
+1.60 (2017-09-14)
+
+- Features:
+    - There's a new (advanced) option to ignore the keyboard layout; this can
+      be helpful for users of non-Latin keyboards.
+    - Firefox support.  This is a work in progress; please report any issues
+      [here](https://github.com/philc/vimium/issues?q=is%3Aopen+sort%3Aupdated-desc);
+      see the [add
+      on](https://addons.mozilla.org/en-GB/firefox/addon/vimium-ff/).
+
+- Bug fixes:
+    - Fixed issue affecting hint placement when the display is zoomed.
+    - Fixed search completion for Firefox (released as 1.59.1, Firefox only).
+
+- Minor versions:
+    - 1.60.1: fix [#2642](https://github.com/philc/vimium/issues/2642).
+    - 1.60.2: revert previous fix for HiDPI screens.  This was breaking link-hint positioning for some users.
+    - 1.60.3: [fix](https://github.com/philc/vimium/pull/2649) link-hint positioning.
+    - 1.60.4: [fix](https://github.com/philc/vimium/pull/2602) hints opening in new tab (Firefox only).
+
+1.59 (2017-04-07)
+
+- Features:
+    - Some commands now work on PDF tabs (`J`, `K`, `o`, `b`, etc.). Scrolling and other content-related commands still do not work.
+
+1.58 (2017-03-08)
+
+- Features:
+    - The `createTab` command can now open specific URLs (e.g, `map X createTab http://www.bbc.com/news`).
+    - With pass keys defined for a site (such as GMail), you can now use Vimium's bindings again with, for example, `map \ passNextKey normal`;
+      this reactivates normal mode temporarily, but *without any pass keys*.
+    - You can now map multi-modifier keys, for example: `<c-a-X>`.
+    - Vimium can now do simple key mapping in some modes; see
+      [here](https://github.com/philc/vimium/wiki/Tips-and-Tricks#key-mapping).
+      This can be helpful with some non-English keyboards (and can also be used
+      to remap `Escape`).
+    - For *Custom key mappings* on the options page, lines which end with `\` are now continued on the following line.
+- Process:
+    - In order to provide faster bug fixes, we may in future push new releases without the noisy notification.
+
+- Post-release minor fixes:
+    - 1.58.1 (2017-03-09) fix bug in `LinkHints.activateModeWithQueue` (#2445).
+    - 1.58.2 (2017-03-19) fix key handling bug (#2453).
+
+1.57 (2016-10-01)
+
+- New commands:
+    - `toggleMuteTab` - mute or unmute the current tab (default binding
+      `<a-m>`), see also [advanced usage](https://github.com/philc/vimium/wiki/Tips-and-Tricks#muting-tabs).
+- Other new features:
+    - You can now map `<backspace>` to a Vimium command (e.g. `map <backspace> goBack`).
+    - For link hints, when one hint marker is covered by another, `<Space>` now
+      rotates the stacking order.  If you use filtered hints, you'll need to
+      use a modifier (e.g. `<c-Space>`).
+- Changes:
+    - Global marks now search for an existing matching tab by prefix (rather than exact match).
+      This allows global marks to be used as quick bookmarks on sites (like Facebook, Gmail, etc)
+      where the URL changes as you navigate around.
+- Bug fixes:
+    - `/i` can no longer hang Vimium while the page is loading.
+    - `<c-a-[>` is no longer handled (incorrectly) as `Escape`.  This also affects `<Alt-Gr-[>`.
+    - If `goX` is mapped, then `go` no longer launches the vomnibar.  This only affects three-key (or longer) bindings.
+
+1.56 (2016-06-11)
+
+- Vimium now works around a Chromium bug affecting users with non-standard keyboard layouts (see #2147).
+- Fixed a bug preventing visual line mode (`V`) from working.
+
+1.55 (2016-05-26)
+
+- New commands:
+    - `visitPreviousTab` - visit the previous tab (by recency) with `^`, or the tab before that with `2^`.
+    - `passNextKey` - pass the next key to the page. For example, using `map <c-]> passNextKey`, you can close
+      Facebook's messenger popups with `<c-]><Esc>`.
+- Link hints:
+    - Now work across all frames in the tab.
+    - Now select frames and scrollable elements.
+    - Now accept a count prefix; `3F` opens three new background tabs, `999F` opens many tabs.
+    - For filtered link hints, a new option on the settings page requires you to press `Enter` to activate a
+      link; this prevents unintentionally triggering Vimium commands with trailing keystrokes.
+- Miscellaneous:
+    - `gg` now accepts a `count` prefix.
+    - `W` now accepts a count prefix; `3W` moves three tabs to a new window.
+    - With smooth scrolling, `2j`-and-hold now gives a faster scroll than `j`-and-hold.
+    - You can now bind keys to a command with a defined count prefix; for example, `map d scrollDown count=4`.
+    - You can now bind three-key (or longer) sequences; for example, `map abc enterInsertMode`.
+    - `c-y` and `c-e` now scroll in visual mode.
+    - The Vimium help dialog has been re-styled.
+- Bug fixes:
+    - `<c-a-[>` is no longer treated as escape.
+    - Fix icon display and memory leak due to a regression in recent Chrome versions (49+).
+- For web-devs only:
+    - When disabled on a tab, Vimium no longer pollutes the dev console with network requests.
+
+1.54 (2016-01-30)
+
+- Fix occasional endless scrolling (#1911).
+
+1.53 (2015-09-25)
+
+- Vimium now works on the new-tab page for Chrome 47.
+- `g0` and `g$` now accept count prefixes; so `2g0` selects the second tab, and so on.
+- Bug fixes:
+    - Fix `moveTabLeft` and `moveTabRight` for pinned tabs (#1814 and #1815).
+
+1.52 (2015-09-09)
+
+- Search completion for selected custom search engines
+  (details on the [wiki](https://github.com/philc/vimium/wiki/Search-Completion)).
+- Use `Tab` on an empty Vomnibar to repeat or edit recent queries
+  (details on the [wiki](https://github.com/philc/vimium/wiki/Tips-and-Tricks#repeat-recent-vomnibar-queries)).
+- Marks:
+    - Use <tt>\`\`</tt> to jump back to the previous position after jump-like movements: <br/>
+        (`gg`, `G`, `n`, `N`, `/` and local mark movements).
+    - Global marks are now persistent and synced.
+- For numeric link hints, you can now use `Tab` and `Enter` to select hints, and hints are ordered by the best
+  match.
+- The Find Mode text entry box now supports editing, pasting, and better handles non-latin characters.
+- Vimium now works on XML pages.
+- Bug fixes.
+
+1.51 (2015-05-02)
+
+- Bug [fixes](https://github.com/philc/vimium/pulls?utf8=%E2%9C%93&q=is%3Apr+sort%3Aupdated-desc+is%3Aclosed+merged%3A%3E%3D2015-04-26+merged%3A%3C2015-05-02+state%3Amerged).
+
+1.50 (2015-04-26)
+
+- Visual mode (in beta): use `v` and then vim-like keystrokes to select text on the page. Use `y` to yank or
+  `p` and `P` to search with your default search engine.. Please provide feedback on Github.
+- Added the option to prevent pages from stealing focus from Vimium when loaded.
+- Many bugfixes for custom search engines, and search engines can now have a description.
+- Better support for frames: key exclusion rules are much improved and work within frames; the Vomnibar is
+  always activated in the main frame; and a new command (`gF`) focuses the main frame.
+- Find mode now has history. Use the up arrow to select previous searches.
+- Ctrl and Shift when using link hints changes the tab in which links are opened in (reinstated feature).
+- Focus input (`gi`) remembers previously-visited inputs.
+- Bug fixes.
+
+1.49 (2014-12-16)
+
+- An option to toggle smooth scrolling.
+- Make Vimium work on older versions of Chrome.
+
+1.46, 1.47, 1.48 (2014-12-15)
+
+- Site-specific excluded keys: you can disable some Vimium key bindings on sites like gmail.com, so you can use the key bindings provided by the site itself.
+- Smooth scrolling.
+- The Vomnibar now orders tabs by recency. Use this to quickly switch between your most recently-used tabs.
+- New commands: "close tabs to the left", "close tabs to the right", "close all other tabs".
+- Usability improvements.
+- Bug fixes.
+
+1.45 (2014-07-20)
+
+- Vimium's settings are now synced across computers.
+- New commands: "open link in new tab and focus", "move tab left", "move tab right", "pin/unpin tab".
+- Vomnibar can now use [search engine shortcuts](https://github.com/philc/vimium/wiki/Search-Engines), similar to Chrome's Omnibar.
+- Due to significant ranking improvements, Vomnibar's search results are now even more helpful.
+- When reopening a closed tab, its history is now preserved.
+- Bug fixes.
+
+1.44 (2013-11-06)
+
+- Add support for recent versions of Chromium.
+- Bug fixes.
+
+1.43 (2013-05-18)
+
+- Relevancy improvements to the Vomnibar's domain & history search.
+- Added `gU`, which goes to the root of the current URL.
+- Added `yt`, which duplicates the current tab.
+- Added `W`, which moves the current tab to a new window.
+- Added marks for saving and jumping to sections of a page. `mX` to set a mark and `` `X`` to return to it.
+- Added "LinkHints.activateModeToOpenIncognito", currently an advanced, unbound command.
+- Disallowed repeat tab closings, since this causes trouble for many people.
+- Update our Chrome APIs so Vimium works on Chrome 28+.
+- Bug fixes.
+
+1.42 (2012-11-03)
+
+- Bug fixes.
+
+1.41 (2012-10-27)
+
+- Bug fixes.
 
-* **Fantastical** 
+1.40 (2012-10-27)
 
-  * 日历、顶部工具栏工具
+- Bug fixes.
+- Added options for search engines and regex find.
+- Pressing unmapped keys in hints mode now deactivates the mode.
+
+1.39 (2012-09-09)
+
+- Bug fixes.
+
+1.38 (2012-09-08)
 
-* **Onedrive**
+- `O` now opens Vomnibar results in a new tab. `B` does the same for bookmarks only.
+- Add a browser icon to quickly add sites to Vimium's exclude list.
+- Restyle options page.
+- `gi` now launches a new mode that allows the user to tab through the input elements on the page.
+- Bug fixes.
 
-* **百度网盘**
+1.37 (2012-07-07)
 
-* **Photoshop 2019**
+- Select the first result by default in Vomnibar tab and bookmark modes.
+
+1.36 (2012-07-07)
+
+- `b` brings up a bookmark-only Vomnibar.
+- Better support for some bookmarklets.
+
+1.35 (2012-07-05)
+
+- Bug fixes.
+
+1.34 (2012-07-03)
+
+- A bug fix for bookmarklets in Vomnibar.
+
+1.33 (2012-07-02)
+
+- A Vomnibar, which allows you to open sites from history, bookmarks, and tabs using Vimium's UI. Type `o` to try it.
+
+1.32 (2012-03-05)
+
+- More tweaks to the next / previous link-detection algorithm.
+- Minor bug fixes.
 
-* **QQ** + **Wechat**
+1.31 (2012-02-28)
+
+- Improve style of link hints, and use fewer characters for hints.
+- Add an option to hide the heads up display (HUD). Notably, the HUD obscures Facebook Chat's textbox.
+- Detection and following of next / previous links has been improved.
+- Addition of `g0` and `g$` commands, for switching tabs.
+- Addition of `p`/`P` commands for URL pasting.
+- A new find mode which optionally supports case sensitivity and regular expressions.
+- Bug fixes.
 
-* **腾讯课堂**
+1.30 (2011-12-04)
 
-* **阿里旺旺**
+- Support for image maps in link hints.
+- Counts now work with forward & backward navigation.
+- `Tab` & `shift-tab` to navigate bookmarks dialog.
+- An alternate link hints mode: type the title of a link to select it. You can enable it in Vimium's Advanced Preferences.
+- Bug fixes.
 
-  
+1.29 (2012-07-30)
 
-### 阅读工具
+- `yf` to copy a link hint url to the clipboard.
+- Scatter link hints to prevent clustering on dense sites.
+- Don't show insert mode notification unless you specifically hit `i`.
+- Remove zooming functionality now that Chrome does it all natively.
 
-* **CHM Reader**
+1.28 (2011-06-29)
 
-* **Feedly**
+- Support for opening bookmarks (`b` and `B`).
+- Support for contenteditable text boxes.
+- Speed improvements and bug fixes.
 
-* **Reeder4**
+1.27 (2011-03-24)
+
+- Improvements and bug fixes.
 
-* **Calibre**
-
-  * 一站式电子书解决方案，图书管理、格式转换、阅读器
-
-* **Marginnote**
-
-  * 阅读标注、笔记，思维导图式笔记、学习卡
-
-* **网易云音乐**
-
-* **QuickTime Player**
-
-* **Movist**
-
-* **SKim**
-
-  * 极速PDF预览器
-
-  
-
-
-### 写作工具
-
-* **GeoGebra**
-* **Mathpix Sniping Tool**
-* **Mathtype**
-* **typora**
-
-
-
-### 学术工具
-
-* **Endnote X9**
-
-  * 跨平台的超强文献管理系统
-
-* **Papers**
-
-  * Mac平台专用文献管理系统，可以和Ipad版同步。
-
-* **iPic**
-  
-  * 图床应用，可以将本地照片生成云端链接
-  
-* **VOSviewer**
-  
-  * 可视化文献网络图分析软件
-  * 使用教程：[传送门](https://mp.weixin.qq.com/s/z7zc14oc40QWRg9dmisoKQ)
-  
-  
-
-
-### 效率工具
-
-* **Alfred4 **（效率神器）
-
-  * 使用教程：[传送门1](https://sspai.com/post/32979)、[传送门2](https://sspai.com/32680)、[传送门3](https://sspai.com/32281)、[传送门4](https://sspai.com/27900)
-  * [传送门5](https://sspai.com/27854)、[传送门6](https://sspai.com/27929)、[传送门7](https://sspai.com/28137)
-
-* **Dash**
-
-  * 手册大全合集，集合文档从github、Stack Overflow以及各大官方手册
-
-* **Flotato**
-
-  * 将Web网站变为一个应用，支持较多国外网站
-
-* **Qbserve**
-
-  * 追踪你在 Mac 上的时间消耗
-
-  
-
-
-
-### 桌面、顶部工具栏
-
-* **Bartendar 3**
-  * Mac 菜单栏简化工具
-* **cDock**
-  * 设定暂缺
-* **Day One**
-  * 顶部栏快速日记，每日日记
-* **iWall**
-  * 动态壁纸软件
-* **Forecast Bar**
-  * 天气顶栏插件
-* **HazeOver**
-  * 屏蔽非当前窗口插件，专注当前工作
-* **HyperDock**
-  * 窗口预览以及放大缩小动画，窗口自动吸附
-* **iCollection**
-  * 桌面文件夹管理软件，可以设置网页、磁盘、文件夹等文件夹插件
-* **iStat Menus**
-  * 顶部栏网速、内存、CPU监测插件
-* **iWall**
-  * 动态桌面软件
-* **KeyCue**
-  * 快捷键快速查询软件
-* **Moom**
-  * 窗口管理软件
-* **One Switch**
-  * 10.14 以上必备神器插件，一键功能有你想要
-* **截图**
-
-
-
-### 系统工具
-
-* **Boom 2**
-  * 音效增强软件，还有一款Boom 3D
-* **DaisyDisk**
-  * 美观现代的磁盘占用分析软件
-* **GrandPerspective**
-  * 经典、硬式方形划分磁盘分析软件
-* **Dictionary** + **Eudic**
-  * 可以导入词库、在线查词的高效词典软件
-* **有道词典**
-  * 在线查词软件
-* **e-Zip**
-  * 万能、简洁解压缩软件
-* **F-young**
-* **Folx** 
-  * 全面的下载器，加入了 BT 搜索、iTunes 集成、YouTube 下载等实用功能
-* **Hard Disk Manager**
-  * Paragon 出品的美观高效的磁盘管理软件
-* **HWMonitor**
-  * 硬盘温度监测
-* **HyperSwitch**
-* **爱思助手**
-  * Mac下提前体验IpadOS的工具
-* **Karabiner-Elements**
-  * 键位定制神器，适合原Windows用户使用
-* **Karabiner-EventViewer**
-  * 配合上面的Elements使用，可以检测自己的键盘按键
-* **KCNScrew**
-  * 听说是一堆破解的注册号，但是一次都还没用上
-* **MacPilot**
-  * 可以更改超过 1200 项的系统设置。涵盖了 Dock、Finder、截图、开机设置、登录窗口、日志、网络等 20 多个分类。(还没好好探索)
-* **NTFS For Mac**
-  * 双系统用户必备
-* **OverSight**
-  * 摄像头和麦克风的权限监控，防止被监控
-* **Parallels Desktop**
-  * Mac上强大的虚拟机软件，可以直接与双系统配合使用
-* **Paste**
-  * 超级强大的剪贴板软件，美观且有效
-* **ShadowsocksX**
-  * SSR的客户端
-* **向日葵/Teamviewer**
-  * 远程控制软件
-* **Transmit**
-  * 强大的FTP客户端
-* **Xtrafinder**
-  * finder 超强扩展，可以实现所有文件夹的功能
-* **迅雷**
-  * 磁链、种子下载软件
-* **Permute 3**
-  - 音、视频格式转换
-
-
-
-###  编程工具
-
-* **Github Desktop**
-
-* **IconJar**
-
-* **iTerm**
-
-* **Mathematics**
-
-* **Patterns**
-
-* **Sublime Text 3**
-
-* **Texmaker**
-
-* **Texstudio**
-
-* **Texpad**
-
-* **Visual Studio Code**
-
-* **Pycharm**
-
-* **Vim**
-
-* **Xcode**
-
-## Mac应用市场
-
-* ### 正版/介绍
-
-  - MacUpdate：https://www.macupdate.com/
-  - App Shopper：http://appshopper.com/
-  - 类似于iOS上Cydia一样的第三方软件商店：[http://hack-store.com](http://hack-store.com/)
-  - 少数派：http://sspai.com/tag/Mac
-  - Mac玩儿法：[http://www.waerfa.com](http://www.waerfa.com/)
-  - 数码荔枝：https://www.lizhi.io/
-
-* ### 盗版软件下载网站
-
-  *上面有大量的开源软件或者免费软件，拒绝盗版从我做起，下面被删除的网站提供大量破解软件下载，欢迎大家监督它们。*
-
-  * ~~[黑苹果乐园](https://imac.hk)~~
-  
-  * ~~[Xclient](https://xclient.info/)~~
-  
-  * ~~[Macsky](https://www.macsky.net)~~
-  
-  * ~~[NMAC](https://nmac.to/)~~
-  
-  * ~~[MacEnjoy](https://www.macenjoy.co/)~~
-  
-  * ~~[知您网](https://www.zhinin.com/)~~
-  
-  * ~~[WaitSun](https://www.waitsun.com/)~~
-  
-  * ~~[苹果软件园](http://www.maczapp.com/)~~
-  
-  * ~~[马可波罗](https://www.macbl.com/)~~
-  
-  * ~~[Appaddict](https://www.appaddict.org/)~~
-  
-  本项目部分受[[awesome Mac](https://github.com/sindresorhus/awesome)]项目启发，整理自己在过去两年总结的APP和网站所得到，后期会不定时更新。
-
-
-
-## IPad 
-
-### 笔记工具(Apple Pencil 必备系列)
-
-* **MarginNote3 / MarginNote Pro**
-  * 思维导图式的笔记方式，IPad上最佳应用之一
-* **GoodNote5**
-  * IPad年度最佳笔记软件
-* **SketchBook**
-  * Autodesk出品的绘画软件（暂时搁置）
-
-### 生产力工具
-
-* **Day One**
-  * 能与MacOS同步的专业日记软件
-* **Calendar 5**
-  * Ipad上最佳的第三方日历管理软件
-* **RssBookLite**
-  * 美观的分栏式的RSS阅读软件，Feedly登录同步
-* **RSS Prime** 
-  * 第三方的美观的RSS阅读软件
-* **快捷指令**
-  * IPad 上效率神器，堪比Alfred
-* **Feedly Classic**
-  * Feedly 官方RSS应用
-
-* **Liquid Text**
-  * 评价很高的笔记软件（暂时搁置）
-
-
-
-### 强大的小工具
-
-* **PDF Converter**
-  * 可以将PDF转换成 Word、RTF、XLS、XML、Text、TIFF格式
-
-* **什么垃圾**
-  * 面对即将到来的垃圾分类软件
-
-* **Alook**
-  * 小付费的极速浏览器
-
-* **Aplayer/Infuse/nPlayer**
-  * 万能播放器
-
-* **Shadowrocket**
-  * 国外商店的SSR客户端
-
-* **PDF Expert Pro**
-  * Mac\Ipad 上最强大的PDF编辑器,兼具OCR识别
-
-* **扫描全能王 HD\Scanbot**
-  * 免费的文档扫描软件
-* **Cuto**
-  * 壁纸软件
-
-* **Merck PTE**
-  * 元素周期表
-
-* **Chartistic**
-  * 好看的数据图表的绘制软件
-
-* **Net**
-  * 网速监测小工具
-
-* **Onedrive**
-  - 能够替代Icloud同步的微软云盘
-
-
-### 参考\计算工具
-
-* **Latex Help**
-  * 快速查询Latex 的符号手册
-
-* **Calculator #**
-  * iPad 上最好用的科学计算器
-
-* **Geography**
-  * Google出品的全平台画图软件
-
-* **Matlab**
-  * 在线或云端的强大的科学计算软件
-
-* **Merriam-Webester Dictionary**
-  * 韦氏词典
-
-* **牛津高阶英汉词典**
-  * 商务印书馆出品的付费词典
-
-* **欧陆词典**
-  * 可以导入的词库的强大词典
-
-* **MiniPedia** 
-  * Ipad上的离线百科全书
-
-* **WolframAlpha**
-  * 数学计算+万能查询
-
-
-### 学术工具
-
-* **Researcher**
-  * 专业的学术期刊订阅软件
-
-* **EndNote**
-  * 跨平台的文献管理软件
-
-* **Papers 3**
-  * 能与MacOS同步的文献管理软件
-
-
-### 视频学习
-
-* **TED**
-* **bilibili**
-* **腾讯视频 HD**
-* **中国大学慕课**
-* **网易云课堂**
-* **网易公开课**
-* **学堂在线**
-* **Brilliant**
-* **Tedict**
-
-
-
-### 常用软件
-
-* **墨迹天气**
-* **QQ**
-* **微信**
-* **淘宝HD**
-* **京东**
-* **知乎**
-* **Acrobat** 
-* **网易云音乐+QQ音乐HD**
-* **网易邮箱大师**（免VPN上Gmail）
-* **Chrome** 
-* **百度网盘HD**
-* **有道词典**
-* **搜狗输入法**
-* **WPS Office**
-* **Word**
-
-## Ipad 应用商店
-
-​    很多小伙伴对Ipad上的应用下载比较困惑，由于IOS开发的必源环境导致了Ipad和Iphone上几乎不可破解的结果，早期我们还可以通过越狱之后的Cydia商店破解不少的应用，但是随着Cydia开发者关闭商店之后，Ipad的应用已经全部趋向正版趋势了。
-
-​    当然也还是存在很多途径的可以进行ipad的应用安装的，如果你想试用的话，其实可以通过 Impact登录开发者账号从网上下载IPA软件进行下载，当然这样相当于是对应用进行开发测试，只有七天的使用时间。七天之后还是得用Impact的重装，如果是自己的主力软件这样来来回回弄难免会出现数据丢失什么的意外，所以这种方法最多用于试用软件。
-
-​    但是不可避免的是我们还是存在很多应用买不起，一个应用动不动就几百，而且像Marginnote 这种高质量软件还不支持免费更新，还得付费升级，这就更令人头疼了。现在比较好的解决方案就是当别人购买了应用之后，利用别人的账号登录进行安装，然后再退出别人的账号，现在不少淘宝和微店就在做这个生意，当然这种模式好处是一人购买多人享福，坏处是得反复的退出登录，而且由于账号在网络上公开流传很可能导致被封，所以就意味着更新的不稳定，以及账号被封的风险。
-
-​    当然最后一种方法就是在App store里购买正版应用，在这过去的一年里我也购买了不少的正版应用，因为实在值得，价格不贵的而且非常好用的我觉得买一下也没什么，而且IOS的开发环境确实不错，每年都有不少精品的应用出现，这也是我见过最好的正版应用平台了。
-
-## Windows 
-
-​    现在主要使用MacOS的我，在WIndows上花费的时间已经不多了，而且因为之前为了装Mojave 重装了一次Windows好多应用都懒得再折腾了，而且现在windows装在机械硬盘上之后速度极其慢，我所使用的工具都是尽可能不占内存的工具的了，能够让在windows上也能流畅的使用了
-
-### 神器
-
-* **WGestures**
-  * 在Windows下体验Mac触发角功能的软件
-
-* **ManicTime**
-  * 自动追踪应用的使用时间并且截图记录，高效记录管理分析
-
-* **Wox**	
-  * Windows下快速启动工具，效率神器
-
-* **IDM**
-  * Windows下除磁链、种子外的最强下载器
-
-* **Everything**
-  * 快速定位你电脑里的一切文件
-
-
-### 小工具
-
-- **PotPlayer**
-  - 小巧、精致的播放器
-
-- **格式工厂**
-  - 万能格式转换器
-
-- **TranslucentTB**
-  - 任务栏透明美化软件
-
-- **Geek**
-  - 卸载软件神器
-
-- **Acrobat Adobe DC**
-  - PDF编辑神器
-
-- **Wall Paper Engine**
-  - 动态壁纸神器，占内存暂时搁置
-
-
-
-### 常用软件
-
-​    与Mac上类似，这边不不再重述
-
-​	
+1.26 (2011-02-17)
+
+- `<c-d>`, `<c-f>` and related are no longer bound by default. You can rebind them on the options page.
+- Faster link hinting.
+
+1.22, 1.23, 1.24, 1.25 (2011-02-10)
+
+-  Some sites are now excluded by default.
+-  View source (`gs`) now opens in a new tab.
+-  Support for browsing paginated sites using `]]` and `[[` to go forward and backward respectively.
+-  Many of the less-used commands are now marked as "advanced" and hidden in the help dialog by default, so
+   that the core command set is more focused and approachable.
+-  Improvements to link hinting.
+-  Bug fixes.
+
+1.21 (2010-10-24)
+
+-  Critical bug fix for an excluded URLs regression due to frame support.
+
+1.20 (2010-10-24)
+
+-  In link hints mode, holding down the shift key will now toggle between opening in the current tab and
+   opening in a new tab.
+-  Two new commands (`zH` and `zL`) to scroll to the left and right edges of the page.
+-  A new command (`gi`) to focus the first (or n-th) visible text input.
+-  A new command (`<a-f>`) to open up multiple links at a time in new tabs.
+-  Frame support.
+-  More robust support for non-US keyboard layouts.
+-  Numerous bug fixes.
+
+1.19 (2010-06-29)
+
+-  A critical bug fix for development channel Chromium.
+-  Vimium icons for the Chrome extensions panel and other places.
+
+1.18 (2010-06-22)
+
+-  Vimium now runs on pages with file:/// and ftp:///
+-  The Options page is now linked from the Help dialog.
+-  Arrow keys and function keys can now be mapped using &lt;left&gt;, &lt;right&gt;, &lt;up&gt;, &lt;down&gt;,
+   &lt;f1&gt;, &lt;f2&gt;, etc. in the mappings interface.
+-  There is a new command `goUp` (mapped to `gu` by default) that will go up one level in the URL hierarchy.
+   For example: from https://vimium.github.io/foo/bar to https://vimium.github.io/foo. At the moment, `goUp`
+does not support command repetition.
+-  Bug fixes and optimizations.
+
+1.17 (2010-04-18)
+
+-  `u` now restores tabs that were closed by the mouse or with native shortcuts. Tabs are also restored in
+   their prior position.
+-  New `unmapAll` command in the key mappings interface to remove all default mappings.
+-  Link hints are now faster and more reliable.
+-  Bug fixes.
+
+1.16 (2010-03-09)
+
+-  Add support for configurable key mappings under Advanced Options.
+-  A help dialog which shows all currently bound keyboard shortcuts. Type `?` to see it.
+-  Bug fixes related to key stroke handling.
+
+1.15 (2010-01-31)
+
+-  Make the CSS used by the link hints configurable. It's under Advanced Options.
+-  Add a notification linking to the changelog when Vimium is updated in the background.
+-  Link-hinting performance improvements and bug fixes.
+-  `Ctrl+D` and `Ctrl+U` now scroll by 1/2 page instead of a fixed amount, to mirror Vim's behavior.
+
+1.14 (2010-01-21)
+
+-  Fixed a bug introduced in 1.13 that prevented excluded URLs from being saved.
+
+1.13 (2010-01-21)
+
+- `<c-f>` and `<c-b>` are now mapped to scroll a full page up or down respectively.
+-  Bug fixes related to entering insert mode when the page first loads, and when focusing Flash embeds.
+-  Added command listing to the Options page for easy reference.
+-  `J` & `K` have reversed for tab switching: `J` goes left and `K` goes right.
+-  `<c-[>` is now equivalent to `Esc`, to match the behavior of VIM.
+-  `<c-e>` and `<c-y>` are now mapped to scroll down and up respectively.
+-  The characters used for link hints are now configurable under Advanced Options.
+
+1.11, 1.12 (2010-01-08)
+
+-  Commands `gt` & `gT` to move to the next & previous tab.
+-  Command `yy` to yank (copy) the current tab's url to the clipboard.
+-  Better Linux support.
+-  Fix for `Shift+F` link hints.
+-  `Esc` now clears the keyQueue. So, for example, hitting `g`, `Esc`, `g` will no longer scroll the page.
+
+1.1 (2010-01-03)
+
+-  A nicer looking settings page.
+-  An exclusion list that allows you to define URL patterns for which Vimium will be disabled (e.g.
+   http\*://mail.google.com/\*).
+-  Vimium-interpreted keystrokes are no longer sent to the page.
+-  Better Windows support.
+-  Various miscellaneous bug fixes and UI improvements.
+
+License
+-------
+Copyright (c) Phil Crosby, Ilya Sukhar. See MIT-LICENSE.txt for details.
